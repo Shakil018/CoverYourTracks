@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<html>
+  <head>
+    <title>Cover Your Tracks</title>
+    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="stylesheet" href="static/animation.css" type="text/css" />
+    <link rel="shortcut icon" href='/static/favicon.ico'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:image" content="https://coveryourtracks.eff.org/static/images/cyt-banner.png"/>
+    <meta property="og:image:secure_url" content="https://coveryourtracks.eff.org/static/images/cyt-banner.png"/>
+    <meta property="og:description" content="See how trackers view your browser"/>
+    <!-- Twitter: card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cover Your Tracks">
+    <meta name="twitter:description" content="See how trackers view your browser">
+    <meta name="twitter:image"  content="https://coveryourtracks.eff.org/static/images/cyt-banner.png">
+    
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+    <script src="/javascripts/jquery.d9396a4a.js"></script>
+    
+  <script src="javascripts/fp2.js" type="text/javascript"></script>
+  <script src="/javascripts/fp2.59a56908.js"></script>
+  <script src="javascripts/fetch_first_party_isolated_whorls.js" type="text/javascript"></script>
+  <body id="testing">
+
+  </head>
+
+    
+    <body>
+
+      <div class="header">
+        <div class="banner">
+          <div class="bar">
+            <div class="wrapper">
+            <div class="attribution">
+              <img class="logo" src="/static/images/eff-logo-red.svg" alt="EFF logo">
+              <span>A Project of the <a href="https://www.eff.org/">Electronic Frontier Foundation</a>
+              <span>
+            </div>
+          </div>
+          </div>
+          <div class="wrapper">
+          <div class="title-area">
+            <div class="site-title">
+                <a class="cyt-logo" href="/">
+                </a>
+              <h2 class="tagline">
+                See how trackers view your browser
+              </h2>
+            </div>
+            <nav>
+              <ul>
+                <li><a href="/learn">Learn</a></li>
+                <li><a href="/about">About</a></li>
+              </ul>
+            </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="content">
+        
+  <div class="testing">
+   <div class="main-section">
+    <h2>
+      Testing your browser<br>
+      <img src='/static/images/ajax-loader.gif' alt='loading...'>
+    </h2>
+    <p>This is an EFF project that allows you to understand how easy it is to identify and track your browser based on how it appears to websites. </p>
+    <iframe id="a" style="position:absolute;right:0px;bottom:0px;height:1px;width:1px;"></iframe>
+    <iframe id="t" style="position:absolute;left:0px;bottom:0px;height:1px;width:1px;"></iframe>
+    <iframe id="dnt" style="position:absolute;left:0px;bottom:0px;height:1px;width:1px;"></iframe>
+  </div>
+  </div>
+  <script type="text/javascript">
+
+    window.onload = function(){
+      var next = 'https://firstpartysimulator.org/kcarter?&aat=1';
+
+      var cb = Math.floor((Math.random()*1000000)+1);
+      var a = document.getElementById('a');
+      a.src = 'https://trackersimulator.org/kcarting-tally?&ad_url=' + cb;
+
+      var t = document.getElementById('t');
+      t.src = 'https://eviltracker.net/kcarting-tally?&trackingserver=' + cb;
+
+      var dnt = document.getElementById('dnt');
+      dnt.src = 'https://do-not-tracker.org/kcarting-tally?&random=' + cb;
+
+      window.addEventListener("message", receiveMessage, false);
+      function receiveMessage(event){
+        if(event.origin == "https://trackersimulator.org"){
+          next += '&a=11';
+        }
+        if(event.origin == "https://eviltracker.net"){
+          next += '&t=11';
+        }
+        if(event.origin == "https://do-not-tracker.org"){
+          next += '&dnt=11';
+        }
+      }
+
+      setTimeout(function(){
+        
+          window.location = next;
+        
+      },3000);
+    }
+
+    window.onunload=function() {};
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=/kcarter-nojs">
+  </noscript>
+
+
+    </div>
+
+      
+
+
+      
+        <footer>
+          <div class="footer-logo"></div>
+
+          <div class="links">
+            <a href="https://supporters.eff.org/donate/coveryourtracks">Donate to EFF</a>
+            <a href="https://www.eff.org/about/contact">Contact</a>
+            <a href="/privacy">Privacy</a>
+            <a href="https://www.eff.org/copyright">CC-License</a>
+          </div>
+        </footer>
+      
+    </div>
+
+    
+      <noscript><img src="https://coveryourtracks.eff.org/js/?idsite=40&amp;rec=1&amp;action_name=Panopticlick" style="border:0" height="0" width="0" alt="" /></noscript>
+      <div style="height: 0; width: 0; position: absolute" id="anon-stats"></div>
+      <script type="text/javascript">
+        document.getElementById('anon-stats').innerHTML = '<img src="https://coveryourtracks.eff.org/js/?idsite=40&amp;rec=1&amp;urlref=' + encodeURIComponent(document.referrer) + '&amp;action_name=' + encodeURIComponent(document.title) + '" style="border:0" height="0" width="0" alt="" />';
+      </script>
+    
+  </body>
+</html>
